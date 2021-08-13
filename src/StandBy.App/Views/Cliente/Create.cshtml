@@ -1,0 +1,53 @@
+﻿@model StandBy.App.ViewModels.ClienteViewModel
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="All" class="text-danger">
+                <vc:Validacao></vc:Validacao>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-4 form-group">
+                    <label asp-for="RAZAO_SOCIAL" class="control-label"></label>
+                    <input asp-for="RAZAO_SOCIAL" class="form-control" maxlength="254" />
+                    <span asp-validation-for="RAZAO_SOCIAL" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <label asp-for="CNPJ" class="control-label"></label>
+                    <input type="number" asp-for="CNPJ" class="form-control" maxlength="14" min="0"/>
+                    <span asp-validation-for="CNPJ" class="text-danger"></span>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label asp-for="DATA_FUNDACAO" class="control-label"></label>
+                    <input asp-for="DATA_FUNDACAO" class="form-control" required />
+                    <span asp-validation-for="DATA_FUNDACAO" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row col-md-8">
+                <div class="col-md-4 form-group">
+                    <label asp-for="CAPITAL" class="control-label"></label>
+                    <input type="number" asp-for="CAPITAL" class="form-control" maxlength="11" required />
+                    <span asp-validation-for="CAPITAL" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <input type="radio" asp-for="STATUS_CLIENTE" value=@true class="custom-radio" />Ativo
+                    <input type="radio" asp-for="STATUS_CLIENTE" value=@false class="custom-radio">Inativo
+                    <span asp-validation-for="STATUS_CLIENTE" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+    </div>
+</div>

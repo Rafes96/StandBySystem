@@ -1,0 +1,47 @@
+﻿@model StandBy.App.ViewModels.ClienteViewModel
+
+<h3>Você está certo de que quer Deletar ?</h3>
+<div>
+    <h4>@Model.RAZAO_SOCIAL</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RAZAO_SOCIAL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RAZAO_SOCIAL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DATA_FUNDACAO)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DATA_FUNDACAO)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CAPITAL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CAPITAL)
+        </dd>
+       
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.STATUS_CLIENTE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.STATUS_CLIENTE)
+        </dd>
+       
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CLIENTE_ID" />
+        <input type="submit" value="Sim, Deletar" class="btn btn-danger" /> |
+        <a asp-action="Index">voltar para lista</a>
+    </form>
+</div>

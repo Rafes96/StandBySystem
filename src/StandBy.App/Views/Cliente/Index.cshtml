@@ -1,0 +1,108 @@
+﻿@model IEnumerable<StandBy.App.ViewModels.ClienteViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-md-12 col-sm-12">
+
+    <a href="@Url.Action("Create")" title="Cadastrar nova Empresa" alt="Cadastrar nova Empresa"><span class="fas fa-plus"></span></a>
+</div>
+
+
+<div class="row col-md-12 margem">
+
+    <form asp-action="Search">
+        <div>
+            <div class="row col-md-12">
+                <div class="col-md-4 form-group">
+                    <label class="control-label">Razão Social</label>
+                    <input type="text" name="RazaoSocial" class="form-control" maxlength="254" />
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <label class="control-label">CNPJ</label>
+                    <input type="text" name="Cnpj" class="form-control" maxlength="14" />
+
+                </div>
+                <div class="col-md-4 form-group">
+                    <input type="radio" id="STATUS_CLIENTE" name="situacao" value=@true class="custom-radio" />Ativo
+                    <input type="radio" id="STATUS_CLIENTE" name="situacao" value=@false class="custom-radio">Inativo
+                </div>
+
+                <div class="col-md-4">
+                    <input type="submit" value="Procurar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="row col-md-12">
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RAZAO_SOCIAL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CNPJ)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DATA_FUNDACAO)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CAPITAL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.STATUS_CLIENTE)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RAZAO_SOCIAL)
+                        </td>
+                        <td>
+                            @Convert.ToUInt64(item.CNPJ).ToString(@"00\.000\.000\/0000\-00")
+
+                        </td>
+                        <td>
+
+                            @Convert.ToDateTime(item.DATA_FUNDACAO).ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CAPITAL)
+                        </td>
+                        <td>
+                            @if (item.STATUS_CLIENTE == false)
+                            {
+                                <p>Inativo</p>
+                            }
+                            else
+                            {
+                                <p>Ativo</p>
+                            }
+
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.CLIENTE_ID"><span class="fas fa-edit"></span></a>
+
+                            <a asp-action="Delete" asp-route-id="@item.CLIENTE_ID"><span class="fas fa-user-times"></span></a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
