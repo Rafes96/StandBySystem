@@ -9,7 +9,7 @@ namespace StandBy.Business.Models
     [Table("cliente")]
     public class Cliente
     {
-        [Key]
+     
         public int CLIENTE_ID { get; set; }
         public string RAZAO_SOCIAL { get; set; }
 

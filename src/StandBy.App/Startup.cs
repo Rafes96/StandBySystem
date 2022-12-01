@@ -34,7 +34,7 @@ namespace StandBy.App
             services.AddControllersWithViews();
 
             services.AddDbContext<AppDbContext>(options =>
-            options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 25))));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(typeof(Startup));
 

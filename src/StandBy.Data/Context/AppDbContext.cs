@@ -13,13 +13,14 @@ namespace StandBy.Data.Context
         }
 
         DbSet<Cliente> Clientes { get; set; }
-       
-       
+
+     
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Faz o mapeamento de todas as minhas classe
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-            base.OnModelCreating(modelBuilder); 
+            //base.OnModelCreating(modelBuilder); 
         }
     }
 }
