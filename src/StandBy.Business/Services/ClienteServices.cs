@@ -29,7 +29,7 @@ namespace StandBy.Business.Services
             if (_clienterepository.Buscar(c => c.CNPJ == cliente.CNPJ).Result.Any())
             {
                 Notificacao("CNPJ já cadastrado");
-                return;
+                return ;
             }
             //classificar o cliente entre A B e C
             cliente.SetClassificao();
@@ -50,9 +50,9 @@ namespace StandBy.Business.Services
         
         }
 
-        public async Task Remove(int id)
+        public async Task Remove(Cliente cliente)
         {
-            await _clienterepository.Remove(id);
+            await _clienterepository.Remove(cliente);
         }
     }
 }

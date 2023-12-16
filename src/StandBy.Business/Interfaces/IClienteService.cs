@@ -12,7 +12,7 @@ namespace StandBy.Business.Interfaces
 
         Task Atualizar(Cliente cliente);
 
-        Task Remove(int id);
+        Task Remove(Cliente cliente);
 
        
     }

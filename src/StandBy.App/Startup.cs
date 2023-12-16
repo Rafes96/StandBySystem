@@ -1,17 +1,12 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StandBy.Data.Context;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using StandBy.Business.Models;
 using StandBy.Business.Interfaces;
 using StandBy.Business.Services;
 using StandBy.Business.Notifications;
@@ -33,8 +28,10 @@ namespace StandBy.App
         {
             services.AddControllersWithViews();
 
+            var response = Configuration.GetSection("teste").Value;
+            Console.Write(response);
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),opt => opt.EnableRetryOnFailure()));
 
             services.AddAutoMapper(typeof(Startup));
 

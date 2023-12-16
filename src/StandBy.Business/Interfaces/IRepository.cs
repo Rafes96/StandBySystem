@@ -13,7 +13,7 @@ namespace StandBy.Business.Interfaces
         Task<TEntity> GetEntidadeID(int id);
         Task<List<TEntity>> GetAll();
         Task Atualizar(TEntity entidade);
-        Task Remove(int id);
+        Task Remove(TEntity entity);
 
         Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> expression);
         Task<int> SaveChanges();

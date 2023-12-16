@@ -107,7 +107,8 @@ namespace StandBy.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _clienteService.Remove(id);
+            
+            await _clienteService.Remove(new Cliente { CLIENTE_ID = id});
 
             return RedirectToAction(nameof(Index));
         }
